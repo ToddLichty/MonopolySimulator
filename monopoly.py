@@ -18,6 +18,7 @@ class Player(object):
         self.in_jail = False
         self.turns_in_jail = 0
 
+
 class Board():
     def __init__(self):
         self.board = []
@@ -78,7 +79,6 @@ class Board():
 
         random.shuffle(self.community_chest_cards)
 
-    
     def setup_chance_cards(self):
         self.chance_cards = [-1 for i in range(0, 15)]
         self.chance_index = 0
@@ -105,9 +105,8 @@ class Board():
         self.chance_cards[6] = 10
 
         random.shuffle(self.chance_cards)
-
  
-     def draw_community_chest(self):
+    def draw_community_chest(self):
         self.community_chest_index += 1
 
         if self.community_chest_index == 16:
@@ -126,6 +125,7 @@ class Board():
 
         return self.chance_cards[self.chance_index - 1]
 
+
 def save_results(file_name):
     with open(file_name, mode='w') as csv_file:
         fieldnames = ['property', 'visits']
@@ -134,6 +134,7 @@ def save_results(file_name):
         writer.writeheader()
         for space in board.board:
             writer.writerow({'property': space.name, 'visits': space.visits})
+
 
 def roll_dice():
     d1, d2 = random.randint(1, 6), random.randint(1, 6)
