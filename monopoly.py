@@ -70,11 +70,13 @@ class Board():
         self.community_chest_cards = [-1 for i in range(0, 15)]
         self.community_chest_index = 0
 
-        #Add a "Advance to Go Card"
-        self.insert_card(self.community_chest_cards, 0)
-        
-        #Add "Go to jail"
-        self.insert_card(self.community_chest_cards, 10)
+        # #Add a "Advance to Go Card"
+        self.community_chest_cards[0] = 0
+
+        # #Add "Go to jail"
+        self.community_chest_cards[1] = 10
+
+        random.shuffle(self.community_chest_cards)
 
     
     def setup_chance_cards(self):
@@ -82,36 +84,30 @@ class Board():
         self.chance_index = 0
 
         #Add "Advance to Illinois Ave"
-        self.insert_card(self.chance_cards, 24)
+        self.chance_cards[0] = 24
 
         #Add "Advance to Go"
-        self.insert_card(self.chance_cards, 0)
+        self.chance_cards[1] = 0
         
         #Add "Advance to St. Charles Place"
-        self.insert_card(self.chance_cards, 11)
+        self.chance_cards[2] = 11
 
         #Add "Take a walk on the boardwalk"
-        self.insert_card(self.chance_cards, 39)
+        self.chance_cards[3] = 39
 
         #Add "Take a ride on the reading"
-        self.insert_card(self.chance_cards, 5)
+        self.chance_cards[4] = 5
 
         #Add "Go back 3 spaces"
-        self.insert_card(self.chance_cards, -3)
+        self.chance_cards[5] = -3
 
         #Add "Go to jail"
-        self.insert_card(self.chance_cards, 10)
+        self.chance_cards[6] = 10
 
+        random.shuffle(self.chance_cards)
 
-    def insert_card(self, cards, new_value):
-        while True:
-            index = random.randint(0, 14)
-
-            if cards[index] < 0:
-                cards[index] = new_value
-                return
-
-    def draw_community_chest(self):
+ 
+     def draw_community_chest(self):
         self.community_chest_index += 1
 
         if self.community_chest_index == 16:
